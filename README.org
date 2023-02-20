@@ -17,3 +17,6 @@ $ rjc-volnoti-config -r # Raises the volume.
 $ rjc-volnoti-config -l # Lower the volume.
 #+end_src
 This script should probably used in conjuction with some other larger program; I use this script in my Xmonad.hs configuration.
+Below is my mute button:
+#+CAPTION:  Adding an image of J.S. Bach as the Mute Icon
+[[./example.png]]

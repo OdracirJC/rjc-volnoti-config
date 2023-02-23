@@ -6,6 +6,7 @@
 #
 #
 
+
 #Deps; pactl, amixer, volnoti
 #
 #
@@ -15,7 +16,7 @@
 ############################################################
 runHelp()
 {
-    echo    "Usage: rjc-volnoti-config [OPTION] IMAGE CHANNEL"
+    echo    "Usage: rjc-volnoti-config [OPTION] IMAGE "
     echo    "Manages system volume and volnoti icons, takes an option and an image."
     echo
     echo
@@ -23,6 +24,8 @@ runHelp()
     echo    "   -r         Raises the system volume"
     echo    "   -l         Lowers the system volume"
     echo    "   -m         Mutes the system volume"
+    echo    "   -b         Raises brightness by 5% takes three IMAGE parameters [LOW] [MEDIUM] [HIGH]"
+    echo    "   -d          Dims brightness by 5%  - takes three IMAGE parameters [LOW] [MEDIUM] [HIGH]"  
     echo
     echo
     echo    "Examples:"
@@ -34,6 +37,26 @@ runHelp()
     echo    "Website:   odracirjc.github.io"
 
 }
+
+############################################################
+#Raise Brightness
+############################################################
+
+raiseBrightness ()
+{
+	lux -a 5; #Raise Brightness by 5%
+	currBrightness=$(lux -G | tr -d '%') #get brightness
+	volnoti-show -2 $low -3 $mid -4 $high $currBrightness
+}
+
+lowerBrightness ()
+{
+	lux -s 5;
+	currBrightness=$(lux -G | tr -d '%')
+	volnoti-show -2 $low -3 $mid -4 $high $currBrightness
+}
+
+
 
 
 
@@ -131,7 +154,7 @@ do
            exit;;
        -l)
            image=$2
-           channel=$333
+           channel=$3
            lowerVolume imagePath
            exit;;
        -m)
@@ -139,6 +162,18 @@ do
            channel=$3
            muteVolume imagePath
            exit;;
+       -b)
+	   low=$2
+	   mid=$3
+       high=$4
+	   raiseBrightness 
+	   exit;;
+       -d)
+	   low=$2
+	   mid=$3
+	   high=$4
+	   lowerBrightness;
+	   exit;;
        -h)
            runHelp
            exit;;

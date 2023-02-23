@@ -1,6 +1,10 @@
 #+TITLE: rjc-volnoti-config
 A script that uses Pactl, Lux, Amixer, and Volnoti to raise, lower, and mute volume, and to produce (somewhat) nice looking volume icons.
-
+* Dependencies:
+** Pactl
+** Lux
+** Amixer
+** Volnoti
 * Installation Process:
 Using your preferred terminal emulator:
 #+begin_src sh

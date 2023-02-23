@@ -1,5 +1,5 @@
 #+TITLE: rjc-volnoti-config
-A script that uses Pactl, Amixer, and Volnoti to raise, lower, and mute volume, and to produce (somewhat) nice looking volume icons.
+A script that uses Pactl, Lux, Amixer, and Volnoti to raise, lower, and mute volume, and to produce (somewhat) nice looking volume icons.
 
 * Installation Process:
 Using your preferred terminal emulator:
@@ -8,13 +8,18 @@ $ git clone https://github.com/OdracirJC/rjc-volnoti-config/edit/main/README.org
 $ sudo cp rjc-volnoti-config.sh /usr/local/bin/rjc-volnoti-config
 #+end_src
 * Usage Guide:
-Although the help page is pretty descriptive, here are some ways you can use this script:
+** Volume Control
 #+begin_src sh
 $ rjc-volnoti-config -m "~/Pictures/someimage.png" #This script toggles the mute button, with the mute icon being "someimage.png"
 #+end_src
 #+begin_src sh
 $ rjc-volnoti-config -r # Raises the volume.
 $ rjc-volnoti-config -l # Lower the volume.
+#+end_src
+** Brightness Control
+#+begin_src sh
+$ rjc-volnoti-config -b "~/Pictures/low.png" "~/Pictures/mid.png" "~/Pictures/high.png" # Raises the volume, and sets the low, medium, and high icons respectively.
+$ rjc-volnoti-config -d ...... # The same as the '-b' flag.
 #+end_src
 This script should probably used in conjuction with some other larger program; I use this script in my Xmonad.hs configuration.
 Below is my mute button:
